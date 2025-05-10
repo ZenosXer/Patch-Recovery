@@ -14,7 +14,14 @@ jobs:
     steps:
     - name: Check Out
       uses: actions/checkout@v3
+    
+    - name: Install avbtool
+      run: |
+        git clone https://github.com/avbtool/avbtool.git
+        sudo cp avbtool/avbtool /usr/local/bin/avbtool
+        sudo chmod +x /usr/local/bin/avbtool
 
+   
     - name: Prepare the environment
       run: |
         sudo apt update
