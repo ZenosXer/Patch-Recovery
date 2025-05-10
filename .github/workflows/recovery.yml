@@ -16,10 +16,19 @@ jobs:
 
       - name: Install avbtool
         run: |
+          # Membersihkan direktori yang ada
+          rm -rf avbtool || {
+            echo "Error: Failed to remove existing avbtool directory"
+            exit 1
+          }
+          
+          # Mengkloning repository baru
           git clone https://github.com/avbtool/avbtool.git || {
             echo "Error: Failed to clone avbtool repository"
             exit 1
           }
+          
+          # Memasang avbtool
           sudo cp avbtool/avbtool /usr/local/bin/avbtool || {
             echo "Error: Failed to copy avbtool to bin directory"
             exit 1
